@@ -1,8 +1,7 @@
-const { Sequelize } = require('sequelize');
-const sequelize = require('sequelize'); 
+const Sequelize = require('sequelize');
 require('dotenv').config(); 
 
-let sequelize; 
+
 
 //logic for heroku and local db 
 if(process.env.JAWSDB_URL){
