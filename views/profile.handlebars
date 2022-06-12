@@ -1,0 +1,139 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{username}}!</h2>
+  </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid nav-style rounded">
+    <div class="container text-white">
+      <h1 class="display-2">Expense Tracker 7000</h1>
+      <p class="lead ">Start Saving Money The Smart Way!</p>
+    </div>
+  </div>
+  <!-- Expense tracker area -->
+  <!-- Button trigger modal -->
+  <div class="row d-flex justify-content-between">
+      <button type="button" class="btn btn-secondary col-12 col-md-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Add expense
+  </button>
+  <h2 class="col-12 col-md-4">Running Total: $-<span id="running-total"></span></h2>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <form  class="new-expense-form"></form>
+        <div class="modal-header">
+          <h5 class="modal-title col-9" id="staticBackdropLabel">Expense Details</h5>
+          <button type="button" class="btn-close col-1" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <label for="itemName">What was your item?</label>
+          <input class="col-12 my-1" name="itemName" type="text"id="item-name" placeholder="item-name">
+            <label for="itemAmount">How much was your item?</label>
+          <input class="col-12 my-1" name="itemAmount" type="text"id="item-amount"placeholder="item-amount">
+          <label for="itemDate">When did you purchase your item?</label>
+          <input class="col-12 my-1" name="itemDate" type="text" id="item-date" placeholder="date">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn1">Submit</button>
+        </div>
+            </form>
+      </div>
+    </div>
+  </div>
+  
+    <div class="row my-2">
+      <div class=" col-12 col-md-6">
+        
+      <canvas id="myChart" width="200" height="200"></canvas>
+      </div>
+    <div class="col-12 col-md-6">
+        
+  <div class="col-12 project-list">
+    <h3>Expenses:</h3>
+        <table class="table table-responsive table-hover">
+  <thead >
+    <tr>
+      <th >Item Name</th>
+      <th >Amount</th>
+      <th >Date</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each cleaneduparray as |clean|}}
+      <tr>
+      <td>{{clean.name}}</td>
+      <td>{{clean.amount}}</td>
+      <td>{{clean.date}}</td>
+      <td class="deleteBtn" data-id="{{clean.id}}">X</td>
+      </tr>
+      {{/each}}
+  </tbody>
+    </table>    
+</div>
+      </div>
+    </div>
+  
+  <!-- Expense tracker area -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<!--  jQuery -->
+{{!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script> --}}
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<script>
+    moment().format(); 
+$.ajax({
+    url:"/profiledata",
+    method:"GET"    }).then(function(data){
+    const dateAmounts = []
+    for(let i=0; i<data.length; i++){
+    dateAmounts.push({"date":moment(data[i].date, 'YYYY-MM-DD').unix(), "amount":parseInt(data[i].amount)})
+    }
+    dateAmounts.sort((a,b)=>{
+        return a.date - b.date
+    })
+    const updatedDates = []
+    const updatedAmounts =[]
+    for(let i=0; i<dateAmounts.length; i++){
+        updatedDates.push(moment.unix(dateAmounts[i].date).format('YYYY-MM-DD')) 
+        updatedAmounts.push(dateAmounts[i].amount)
+    }
+    const chartData = {
+        Dates: updatedDates,
+        Amounts: updatedAmounts
+    };
+    let lineChart = $('#myChart').html();
+    let lineChartScript = Handlebars.compile(lineChart);
+    let linehtml = lineChartScript(chartData);
+    $(document.body).append(linehtml);
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels:  chartData.Dates, 
+        datasets: [
+            {
+            label: "Expense",
+            fill: true,
+            lineTension: 0,
+            borderColor: "red",
+            data:  chartData.Amounts 
+            }
+        ]
+    } 
+    });
+    let runningTotal = 0
+    for(let i=0; i<dateAmounts.length; i++){
+        let newnumber = dateAmounts[i].amount
+        runningTotal+= newnumber
+    }
+    $('#running-total').html(runningTotal)
+});
+</script>
+<script src="./js/profile.js"></script>

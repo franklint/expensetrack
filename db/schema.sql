@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS expenseTracker_db; 
-CREATE DATABASE expenseTracker_db; 
+DROP DATABASE IF EXISTS expense_db; 
+CREATE DATABASE expense_db; 

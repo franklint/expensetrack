@@ -1,42 +1,21 @@
 [
     {
-        "user_id": 1,
-        "total_income": 30000,
-        "total_remain": 5000,
-        "savings_goal_name": "New Car!!!",
-        "savings_amount": 20000,
-        "savings_date": "01/01/2022"
-    },
+        "name": "groceries", 
+        "amount": "55.60", 
+        "date":"", 
+        "userid": 1
+    }, 
     {
-        "user_id": 2,
-        "total_income": 30000,
-        "total_remain": 5000,
-        "savings_goal_name": "New Car!!!",
-        "savings_amount": 20000,
-        "savings_date": "02/01/2022"
-    },
-    {
-        "user_id": 3,
-        "total_income": 30000,
-        "total_remain": 5000,
-        "savings_goal_name": "New Car!!!",
-        "savings_amount": 20000,
-        "savings_date": "03/01/2022"
-    },
-    {
-        "user_id": 4,
-        "total_income": 30000,
-        "total_remain": 5000,
-        "savings_goal_name": "New Car!!!",
-        "savings_amount": 20000,
-        "savings_date": "06/01/2022"
-    },
-    {
-        "user_id": 5,
-        "total_income": 30000,
-        "total_remain": 5000,
-        "savings_goal_name": "New Car!!!",
-        "savings_amount": 20000,
-        "savings_date": "07/01/2022"
-    }
+        "name": "Steakhouse",
+        "amount": "75.68",
+        "date": "",
+        "userid": 1
+      },
+      {
+        "name": "parking",
+        "amount": "20.50",
+        "date": "",
+        "userid": 1
+      }
+
 ]

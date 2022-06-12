@@ -1,55 +1,45 @@
 const {Model, DataTypes} = require('sequelize'); 
+const dataTypes = require('sequelize/lib/data-types'); 
 const sequelize = require('../config/connection'); 
 
 class Budget extends Model{}
 
-Budget.init(
-    {
-        id: {
-            type:DataTypes.INTEGER, 
-            allowNull: false, 
-            primaryKey: true, 
-            autoIncrement: true, 
-        }, 
-        user_id: {
-            type: DataTypes.INTEGER, 
-            references: {
-                model: 'user', 
-                key:'id',
-            },
-        },
-        total_income: {
-            type:DataTypes.DECIMAL, 
-            allowNull: true, 
-        }, 
-        total_remain: {
-            type: DataTypes.DECIMAL,
-            allowNull: true, 
-        }, 
-        total_expenses: {
-            type: DataTypes.DECIMAL, 
-            allowNull: true, 
-        }, 
-        savings_goal_name: {
-            type: DataTypes.STRING, 
-            allowNull: true, 
-        },
-        savings_amount: { 
-            type: DataTypes.DECIMAL, 
-            allowNull: true, 
-        }, 
-        goal_remain: {
-            type: DataTypes.DECIMAL, 
-            allowNull: true, 
-        },
-    }, 
-    {
-        sequelize, 
-        timestamps: false, 
-        freezeTableName: true, 
-        underscored: true, 
-        modelName: 'budget', 
-    }
-); 
 
-module.exports = Budget; 
+//expense to be renamed not budget 
+Budget.init(
+{
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    amount: {
+      type: DataTypes.DECIMAL(10,2),
+      allowNull: false,
+    },
+    date:{
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    userid:{
+      type: dataTypes.INTEGER,
+      references:{
+        model:'user',
+        key: 'id',
+      }
+    },
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'budget'
+  }
+);
+module.exports = Budget;

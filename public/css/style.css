@@ -1,0 +1,90 @@
+header, .project:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.no-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #c4d6df;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.no-button:hover {
+  color: #1b1c1d;
+  text-decoration: underline;
+}
+
+.dollar-amount {
+  color: #000000;
+  font-weight: bold;
+  margin-left: -5px;
+}
+
+/* new css  */
+
+.login-container{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.login-form-1{
+  padding: 5%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3{
+  text-align: center;
+  color: rgb(24, 5, 5);
+}
+.login-form-2{
+  padding: 5%;
+  background: rgb(89, 173, 89);
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-2 h3{
+  text-align: center;
+  color: #fff;
+}
+.login-container form{
+  padding: 10%;
+}
+.btnSubmit
+{
+  width: 50%;
+  border-radius: 1rem;
+  padding: 1.5%;
+  border: none;
+  cursor: pointer;
+}
+.login-form-1 .btnSubmit{
+  font-weight: 600;
+  color: #fff;
+  background-color: green;
+}
+.login-form-2 .btnSubmit{
+  font-weight: 600;
+  color: green;
+  background-color: #fff;
+}
+.login-form-2 .ForgetPwd{
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.login-form-1 .ForgetPwd{
+  color: green;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-style{
+  background: green;
+}
+
+.mini-nav{
+  border-style: 5px solid red;
+}
+
+
+/* new css end */

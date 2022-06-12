@@ -1,14 +1,6 @@
-const User = require('./User'); 
-const Transaction = require('./Transaction'); 
-const Budget = require('./Budget'); 
+const User = require('./User');
+const Budget = require('./Budget');
+User.hasMany(Budget); 
 
-User.hasMany(Transaction, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE', 
-}); 
 
-User.hasOne(Budget, { 
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE', 
-}); 
-
+module.exports = { Budget, User};
