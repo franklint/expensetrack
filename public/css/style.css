@@ -39,7 +39,7 @@ header, .project:not(:last-child) {
 }
 .login-form-2{
   padding: 5%;
-  background: rgb(89, 173, 89);
+  background: rgb(18, 26, 18);
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
 .login-form-2 h3{
@@ -60,7 +60,7 @@ header, .project:not(:last-child) {
 .login-form-1 .btnSubmit{
   font-weight: 600;
   color: #fff;
-  background-color: green;
+  background-color: rgb(18, 26, 18);
 }
 .login-form-2 .btnSubmit{
   font-weight: 600;
@@ -73,17 +73,17 @@ header, .project:not(:last-child) {
   text-decoration: none;
 }
 .login-form-1 .ForgetPwd{
-  color: green;
+  color: rgb(7, 29, 7);
   font-weight: 600;
   text-decoration: none;
 }
 
 .nav-style{
-  background: green;
+  background: rgb(12, 17, 12);
 }
 
 .mini-nav{
-  border-style: 5px solid red;
+  border-style: 5px solid rgba(255, 0, 0, 0.356);
 }
 
 
