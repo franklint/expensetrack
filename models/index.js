@@ -1,6 +1,8 @@
+const Profloss = require('./Profloss');
 const User = require('./User');
-const Budget = require('./Budget');
-User.hasMany(Budget); 
+User.hasMany(Profloss);
 
 
-module.exports = { Budget, User};
+module.exports = {
+Profloss,User
+};

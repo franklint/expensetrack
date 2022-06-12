@@ -1,11 +1,7 @@
 const router = require('express').Router();
-const { Budget, User} = require('../models');
+const { Profloss, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-/* home-routes: Includes all routes that are not api calls. */
-
-// GET all user information and associated budget data.
-// Only get info of the one user that's logged in!
 router.get('/', async (req, res) => {
   try {
     res.render('login', { 
@@ -15,30 +11,33 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+// Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
-  try { 
+  try {
+    // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.userid, {
-      attributes: { exclude: ['password']}, 
-      include: [ {model: Budget}], 
+      attributes: { exclude: ['password'] },
+      include: [{model: Profloss}],
     });
-    const budgetData = await Budget.findAll({
-      where: { 
-        userid: userData.dataValues.id
-      }
+    const proflossData = await Profloss.findAll({
+        where:{
+            userid: userData.dataValues.id
+
+        }
     })
-    const budgetarray = budgetData.map((item) => item.get({plain: true}))
-    const user = budgetData.get({plain: true}); 
+    const cleaneduparray = proflossData.map((item)=> item.get({plain:true}))
+    const user = userData.get({ plain: true });
 
     res.render('profile', {
-      budgetarray, 
-      ...user, 
+      cleaneduparray,
+      ...user,
       logged_in: true
-    }); 
+    });
   } catch (err) {
-    res.status(500).json(err); 
+    res.status(500).json(err);
   }
-}); 
-
+});
 
 router.get('/profiledata', withAuth, async (req, res) => {
   try {

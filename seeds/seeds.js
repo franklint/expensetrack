@@ -12,7 +12,8 @@ const seedDatabase = async() => {
         returning: true,
     }); 
     for (const budget of budgetData) {
-        await Budget.create({...budget})
+        await Budget.create({
+            ...budget})
     }
     process.exit(0); 
 }; 
