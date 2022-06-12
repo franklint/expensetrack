@@ -2,20 +2,19 @@
     {
         "name": "groceries", 
         "amount": "55.60", 
-        "date":"", 
+        "date": "09/01/2022", 
         "userid": 1
     }, 
     {
-        "name": "Steakhouse",
-        "amount": "75.68",
-        "date": "",
+        "name": "steakhouse", 
+        "amount": "75.68", 
+        "date": "10/1/2022", 
         "userid": 1
-      },
-      {
-        "name": "parking",
-        "amount": "20.50",
-        "date": "",
+    }, 
+    {
+        "name": "parking", 
+        "amount": "20.50", 
+        "date": "06/12/2022", 
         "userid": 1
-      }
-
+    }
 ]
