@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Profloss, User } = require('../models');
+const { Budget, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -18,15 +18,15 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.userid, {
       attributes: { exclude: ['password'] },
-      include: [{model: Profloss}],
+      include: [{model: Budget}],
     });
-    const proflossData = await Profloss.findAll({
+    const budgetData = await Budget.findAll({
         where:{
             userid: userData.dataValues.id
 
         }
     })
-    const cleaneduparray = proflossData.map((item)=> item.get({plain:true}))
+    const cleaneduparray = budgetData.map((item)=> item.get({plain:true}))
     const user = userData.get({ plain: true });
 
     res.render('profile', {
@@ -44,15 +44,15 @@ router.get('/profiledata', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.userid, {
       attributes: { exclude: ['password'] },
-      include: [{model: Profloss}],
+      include: [{model: Budget}],
     });
-    const proflossData = await Profloss.findAll({
+    const budgetData = await Budget.findAll({
         where:{
             userid: userData.dataValues.id
             // userData.dataValues.id
         }
     })
-    const profiles = proflossData.map((item)=> item.get({plain:true}))
+    const profiles = budgetData.map((item)=> item.get({plain:true}))
     const user = userData.get({ plain: true });
 
     // res.render('profile', {

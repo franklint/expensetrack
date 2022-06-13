@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 const dataTypes = require('sequelize/lib/data-types');
 const sequelize = require('../config/connection');
 
-class Profloss extends Model {}
+class Budget extends Model {}
 
-Profloss.init(
+Budget.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -37,7 +37,7 @@ Profloss.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'profloss'
+    modelName: 'budget'
   }
 );
-module.exports = Profloss;
+module.exports = Budget;
