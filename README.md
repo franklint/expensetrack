@@ -55,9 +55,7 @@ On the home page, the user is prompted to enter their email address and password
 
 ## Screenshots
 See below screenshots
-![alt="Screenshot of Landing Page"](./public/assets/images/screenshot.png)
-![alt="Screenshot of App Page"](./public/assets/images/screenshot1.png)
-![alt="Screenshot of App Page"](./public/assets/images/screenshot2.png)
+
 
 ![screenshot](https://user-images.githubusercontent.com/42953264/173267960-f4802b42-4433-4eda-96ae-70aa9416c772.png)
 ![image](https://user-images.githubusercontent.com/42953264/173267972-0121e610-0673-4783-8e3e-83fbfefe3083.png)
